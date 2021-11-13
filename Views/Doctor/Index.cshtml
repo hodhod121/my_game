@@ -1,0 +1,10 @@
+﻿@model MyGame.Models.DoctorModel
+<div class="text-center bg-primary m-auto w-50 p-4 h-25">
+Enter Your guess between 0 and 100.
+<form asp-action="Index" asp-controller="Doctor">
+    <label asp-for="temperature">Your Guess</label>
+    <input asp-for="temperature" placeholder="0" required />
+    <input type="submit" />
+</form>
+<p>@ViewBag.TempResult</p>
+</div>
