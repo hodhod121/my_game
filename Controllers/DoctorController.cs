@@ -11,15 +11,19 @@ namespace WebApplication1.Controllers
 {
     public class DoctorController : Controller
     {
+       
         [HttpGet]
         public IActionResult Index()
         {
+        
             return View();
         }         
         TempResult tempResult = new TempResult();
+        
         [HttpPost]
         public IActionResult Index(DoctorModel temprature)
-        {                       
+        {
+          
             var sessionNumber = HttpContext.Session.GetInt32("SessionNumber");
             var guess = tempResult.GetResult(ref temprature);
             var message="";

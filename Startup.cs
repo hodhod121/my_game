@@ -66,6 +66,9 @@ namespace MyGame
                 endpoints.MapControllerRoute(
                name: "Doctor",
                pattern: "{controller=Doctor}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+             name: "Temp",
+             pattern: "{controller=Temp}/{action=Index}/{id?}");
             });
         }
     }
