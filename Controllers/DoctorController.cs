@@ -23,8 +23,14 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult Index(DoctorModel temprature)
         {
-          
-            var sessionNumber = HttpContext.Session.GetInt32("SessionNumber");
+
+            if (HttpContext.Session.GetInt32("SessionNum") == null)
+            {
+                MyModel randomModel = new MyModel();
+                randomModel.GetGuessNumber();
+                HttpContext.Session.SetInt32("SessionNum", randomModel.MyNumber);
+            }
+            var sessionNumber = HttpContext.Session.GetInt32("SessionNum");
             var guess = tempResult.GetResult(ref temprature);
             var message="";
             if (int.Parse(guess) > sessionNumber)
@@ -40,7 +46,7 @@ namespace WebApplication1.Controllers
                 message = " congratulating you on your success";
                 MyModel randomModel = new MyModel();
                 randomModel.GetGuessNumber();
-                HttpContext.Session.SetInt32("SessionNumber", randomModel.MyNumber);
+                HttpContext.Session.SetInt32("SessionNum", randomModel.MyNumber);
             }
             ViewBag.TempResult = message;
             return View();

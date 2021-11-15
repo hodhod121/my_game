@@ -26,7 +26,7 @@ namespace MyGame
         {
             services.AddControllersWithViews();
             services.AddSession(options => {
-                options.IdleTimeout = TimeSpan.FromMinutes(1800);
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
             });
             services.Configure<CookiePolicyOptions>(options =>
             {
